@@ -108,4 +108,5 @@ npm test
 
 Débora Everly  
 Quality Assurance
+
 [LinkedIn](https://www.linkedin.com/in/debora-everly/)
