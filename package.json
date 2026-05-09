@@ -1,0 +1,22 @@
+{
+  "name": "challenge-login-pgats",
+  "version": "1.0.0",
+  "description": "Desafio de autenticação com JavaScript e testes automatizados utilizando Mocha.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "javascript",
+    "mocha",
+    "testes",
+    "login",
+    "nodejs"
+  ],
+  "author": "Débora Everly - deboraeverly@hotmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^11.7.5"
+  }
+}
