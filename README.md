@@ -1,6 +1,6 @@
-# Desafio Login - Mocha + JavaScript
+# Desafio Login
 
-Projeto desenvolvido para o desafio da disciplina, utilizando JavaScript e testes automatizados com Mocha.
+Projeto desenvolvido para o desafio da disciplina Programação para Automação de Testes, utilizando JavaScript e testes automatizados com Mocha.
 
 ## Orientações
 
@@ -87,7 +87,7 @@ git clone https://github.com/deboraeverlyab/challenge-login-pgats.git
 Acesse a pasta do projeto:
 
 ```bash
-cd desafio-login-mocha
+cd challenge-login-pgats
 ```
 
 Instale as dependências:
@@ -95,8 +95,6 @@ Instale as dependências:
 ```bash
 npm install
 ```
-
----
 
 ## Executando os Testes
 
@@ -106,16 +104,8 @@ npm test
 
 ---
 
-## Exemplo de Uso
-
-```javascript
-fazerLogin('joao@email.com', '123456');
-// Retorno:
-// Login realizado com sucesso
-```
-
----
-
 ## Autor
 
-Débora Everly
+Débora Everly  
+Quality Assurance
+[LinkedIn](https://www.linkedin.com/in/debora-everly/)
