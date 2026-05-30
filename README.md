@@ -1,52 +1,48 @@
-# Desafio Login
+# Desafio Pagamento
 
 Projeto desenvolvido para o desafio da disciplina Programação para Automação de Testes, utilizando JavaScript e testes automatizados com Mocha.
 
 ## Orientações
 
-Declarar um vetor contendo informações sobre usuários de um site, com as propriedades:
+Criar uma classe `ServicoDePagamento` com os seguintes comportamentos:
 
-- id
-- nome
-- email
-- senha
-- expirado (booleano: true ou false)
-
-Ao menos um dos usuários deve possuir a propriedade `expirado` como `true`.
+- Armazenar pagamentos como objetos JavaScript em uma lista interna;
+- Cada pagamento deve conter as propriedades: `codigoBarras`, `empresa`, `valor` e `categoria`;
+- A `categoria` deve ser `'cara'` quando o valor for maior que `100.00`, e `'padrão'` caso contrário.
 
 
 ## Desafio
 
-Construir uma função para realizar login.
+Implementar a classe com dois métodos:
 
-A função deverá:
-
-- Retornar uma mensagem de sucesso caso exista um usuário com email e senha válidos;
-- Informar que as credenciais expiraram caso `expirado` seja `true`;
-- Informar que as credenciais estão incorretas caso o email não exista ou a senha esteja incorreta para aquele usuário.
+- `pagar(codigoBarras, empresa, valor)`: realiza o pagamento e o armazena na lista;
+- `consultarUltimoPagamento()`: retorna apenas o último pagamento realizado.
 
 
 ## Testes
 
-Escrever 4 testes automatizados para os seguintes cenários:
+Escrever testes automatizados para os seguintes cenários:
 
-1. Login realizado com sucesso;
-2. Credencial expirada;
-3. Usuário não encontrado;
-4. Senha incorreta para o usuário encontrado.
+1. Pagamento com valor acima de 100 recebe categoria `'cara'`;
+2. Pagamento com valor igual a 100 recebe categoria `'padrão'`;
+3. Pagamento com valor abaixo de 100 recebe categoria `'padrão'`;
+4. `consultarUltimoPagamento` retorna apenas o último pagamento após múltiplos pagamentos;
+5. O objeto de pagamento retornado possui as propriedades `codigoBarras`, `empresa`, `valor` e `categoria`.
 
 
 ## Exemplo
 
-
 ```javascript
-fazerLogin('email@existente.com', 'senhaCerta123');
+const servicoDePagamento = new ServicoDePagamento();
+servicoDePagamento.pagar('0987-7656-3475', 'Samar', 156.87);
+console.log(servicoDePagamento.consultarUltimoPagamento());
 // Retorno:
-// Login realizado com sucesso
-
-fazerLogin('credencial@expirada.com', 'senhaCerta123');
-// Retorno:
-// Renove suas credenciais
+// {
+//   codigoBarras: '0987-7656-3475',
+//   empresa: 'Samar',
+//   valor: 156.87,
+//   categoria: 'cara'
+// }
 ```
 
 ---
@@ -62,13 +58,13 @@ fazerLogin('credencial@expirada.com', 'senhaCerta123');
 ## Estrutura do Projeto
 
 ```bash
-desafio-login-mocha/
+challenge-payment-pgats/
 │
 ├── src/
-│   └── login.js
+│   └── pagamento.js
 │
 ├── test/
-│   └── login.test.js
+│   └── pagamento.test.js
 │
 ├── package.json
 └── README.md
@@ -81,13 +77,13 @@ desafio-login-mocha/
 Clone o repositório:
 
 ```bash
-git clone https://github.com/deboraeverlyab/challenge-login-pgats.git
+git clone https://github.com/deboraeverlyab/challenge-payment-pgats.git
 ```
 
 Acesse a pasta do projeto:
 
 ```bash
-cd challenge-login-pgats
+cd challenge-payment-pgats
 ```
 
 Instale as dependências:
