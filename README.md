@@ -81,10 +81,10 @@ Execução agendada utilizando:
 
 ```yaml
 schedule:
-  - cron: '0 8 * * *'
+  - cron: '0 8 * * 1'
 ```
 
-Executa diariamente às **08:00 UTC** (05:00 horário de Brasília).
+Executa toda segunda-feira às **08:00 UTC** (05:00 horário de Brasília).
 
 ---
 

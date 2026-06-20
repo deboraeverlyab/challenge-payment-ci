@@ -7,8 +7,8 @@ name: "02 - Execução Agendada de Testes"
 # gatilho de agendamento temporal = schedule (padrão Cron)
 on:
   schedule:
-    # minutagem (0) hora (8) dia do mês (*) mês (*) dia da semana (*) -> Todo dia às 08:00 UTC
-    - cron: '0 8 * * *'
+    # Executa toda segunda-feira exatamente às 08:00 UTC
+    - cron: '0 8 * * 1'
 
 # tarefas dentro da pipeline = jobs
 jobs:
