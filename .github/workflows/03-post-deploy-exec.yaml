@@ -1,0 +1,51 @@
+# CI de Nível 03 - Disparo Automático Pós-Deploy por evento de Push
+
+# nome da pipeline
+name: "03 - Execução Pós-Deploy (Push)"
+
+# gatilhos / triggers - regras de disparo
+# gatilho por evento de envio = push
+on:
+  push:
+    # filtragem de alvos: executa apenas se o push acontecer nessas ramificações
+    branches:
+      - main
+      - master
+
+# tarefas dentro da pipeline = jobs
+jobs:
+  # nome do job
+  test-automation:
+    # infraestrutura — ambiente/sistema operacional disponibilizado pelo GitHub
+    runs-on: ubuntu-latest
+
+    # passos do job
+    steps:
+      # clone do projeto para dentro do ambiente de execução
+      - name: "Checkout do código-fonte"
+        uses: actions/checkout@v4
+
+      # instalação do node com a versão exigida (22)
+      - name: "Configurando Node.js v22"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # instalação das dependências configuradas no package.json
+      - name: "Instalando dependências"
+        run: npm install
+
+      # execução dos testes utilizando o script que gera o relatório em formato XML
+      - name: "Executando testes automatizados com Mocha"
+        run: npm run test:ci
+
+      # geração e publicação do artefato — salva o relatório XML no painel da pipeline
+      - name: "Salvando relatório de testes (Artefato)"
+        uses: actions/upload-artifact@v4
+        # condição de execução: "always()" garante a geração do artefato mesmo se houver falhas nos testes
+        if: always()
+        with:
+          name: junit-test-results-post-deploy # identificador do download para disparo pós-push
+          path: test-results.xml                # caminho físico do arquivo gerado
+          retention-days: 7                     # tempo que o GitHub guardará o arquivo para download

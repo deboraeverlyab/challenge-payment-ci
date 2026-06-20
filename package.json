@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test:ci": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=test-results.xml"
   },
   "keywords": [
     "javascript",
@@ -18,5 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "mocha": "^11.7.5"
+  },
+  "devDependencies": {
+    "mocha-junit-reporter": "^2.2.1"
   }
 }
